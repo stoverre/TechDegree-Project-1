@@ -1,6 +1,8 @@
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
+Richard Stover
+4/9/2020
 ******************************************/
 
 // For assistance: 
@@ -24,7 +26,6 @@ let quotes = [
   {quote: `Only a life lived for others is a life worthwhile.`, source: `Albert Einstein`, category: 'person'},
   {quote: `I find that the harder I work, the more luck I seem to have.`, source: `Thomas Jefferson`, category: 'person'}
 ];
-let quoteIndex;
 
 //pick a random number from low to high
 function randomNum (low, high) {
@@ -33,14 +34,13 @@ function randomNum (low, high) {
 
 /***
  * `getRandomQuote` function
- * Pass in an array
- * Pick a random index of the array and return the object at that index
+ * Pass in a quote array
+ * Pick a random index of the array and return the quote object at that index
 ***/
 function getRandomQuote(quoteList) {
-  
   //get a random number to index the passed in list (pick a random object)
   //needs to be -1 from the length due to the zero index of arrays
-  quoteIndex = randomNum(0, quoteList.length-1);
+  let quoteIndex = randomNum(0, quoteList.length-1);
 
   //return the random quote as an object
   return quoteList[quoteIndex];
@@ -83,7 +83,8 @@ function printQuote() {
 
   //put the htmlStr on the webpage
   document.getElementById('quote-box').innerHTML = htmlStr;  
-  //set the webpage body color to a random color when the button is clicked
+
+  //set the webpage body color to a random color
   document.body.style.backgroundColor = createRandomRGB();
 }
 
@@ -91,15 +92,9 @@ function printQuote() {
 //counter keeps ticking even when the button is clicked!
 setTimeout("location.reload(true)", 10000);
 
-//set the webpage body color to red (syntax test)
-//document.body.style.backgroundColor = 'rgb(218, 37, 61)';
-
 //set webpage body color to a random color
+//this works based on the above refresh timer
 document.body.style.backgroundColor = createRandomRGB();
 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
-
+//click event listener for the print quote button
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
