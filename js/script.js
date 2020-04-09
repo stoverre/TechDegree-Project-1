@@ -17,7 +17,7 @@ let quotes = [
   {quote: `Fear is the path to the dark side...fear leads to anger...anger leads to hate..hate leads to suffering.`, source: `Yoda`, citation: `<i>The Phantom Menace</i>`, year: 1999, category: 'movie'},
   {quote: `Real courage is when you know you're licked before you begin, but you begin anyway and see it through no matter what.`, source: `Atticus Finch`, citation: `<i>To Kill a Mockingbird</i>`, category: 'book'},
   {quote: `It matters not what someone is born, but what they grow to be`, source: `Professor Albus Dumbledore`, citation: `<i>Harry Potter and the Goblet of Fire</i>`, category: 'book'},
-  {quote: `All we have to decide is what to do with the time that is given us.`, source: `Gandalf`, citation: `<i>The Fellowship fo the Ring</i>`, category: 'book'},
+  {quote: `All we have to decide is what to do with the time that is given us.`, source: `Gandalf`, citation: `<i>The Fellowship of the Ring</i>`, category: 'book'},
   {quote: `If you do what you've always done, you'll get what you've always gotten`, source: `Tony Robbins`, category: 'person'},
   {quote: `The more rejection you get, the better you are, the more you’ve learned, the closer you are to your outcome`, source: `Tony Robbins`, category: 'person'},
   {quote: `Do not go where the path may lead, go instead where there is no path and leave a trail.`, source: `Ralph Waldo Emerson`, category: 'person'},
@@ -46,6 +46,11 @@ function getRandomQuote(quoteList) {
   return quoteList[quoteIndex];
 }
 
+//creates 3 random numbers and returns an HTML RGB string
+function createRandomRGB(){
+  return `rgb(${randomNum(0, 255)}, ${randomNum(0, 255)}, ${randomNum(0, 255)})`
+}
+
 /***
  * `printQuote` function
  * call the getRandomQuote()
@@ -57,7 +62,6 @@ function printQuote() {
   //get the random quote from getRandomQuote() and create the
   //HTML string from its quote and source properties
   let randomQuote = getRandomQuote(quotes);
-  //let randomQuote = quotes[0];
   let htmlStr = `<p class="quote">${randomQuote.quote} </p>`;
   htmlStr += `<p class="source">${randomQuote.source}`;
 
@@ -72,16 +76,26 @@ function printQuote() {
   }
 
   //extra credit: add the category property to the HTML string
-  //htmlStr += `<span class="category">${randomQuote.category}</span>`; 
+  htmlStr += `<span class="category">, ${randomQuote.category}</span>`; 
 
   //add the closing <p> to the HTML string
-  const newLocal = htmlStr += `</p>`;
+  htmlStr += `</p>`;
 
-  return htmlStr;
+  //put the htmlStr on the webpage
+  document.getElementById('quote-box').innerHTML = htmlStr;  
+  //set the webpage body color to a random color when the button is clicked
+  document.body.style.backgroundColor = createRandomRGB();
 }
 
-//put the htmlStr on the webpage
-document.getElementById('quote-box').innerHTML = printQuote(); 
+//refresh the page every 10 seconds
+//counter keeps ticking even when the button is clicked!
+setTimeout("location.reload(true)", 10000);
+
+//set the webpage body color to red (syntax test)
+//document.body.style.backgroundColor = 'rgb(218, 37, 61)';
+
+//set webpage body color to a random color
+document.body.style.backgroundColor = createRandomRGB();
 
 /***
  * click event listener for the print quote button
