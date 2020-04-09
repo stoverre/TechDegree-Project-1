@@ -56,8 +56,8 @@ function getRandomQuote(quoteList) {
 function printQuote() {
   //get the random quote from getRandomQuote() and create the
   //HTML string from its quote and source properties
-  //let randomQuote = getRandomQuote(quotes);
-  let randomQuote = quotes[0];
+  let randomQuote = getRandomQuote(quotes);
+  //let randomQuote = quotes[0];
   let htmlStr = `<p class="quote">${randomQuote.quote} </p>`;
   htmlStr += `<p class="source">${randomQuote.source}`;
 
