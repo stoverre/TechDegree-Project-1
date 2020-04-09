@@ -56,7 +56,8 @@ function getRandomQuote(quoteList) {
 function printQuote() {
   //get the random quote from getRandomQuote() and create the
   //HTML string from its quote and source properties
-  let randomQuote = getRandomQuote(quotes);
+  //let randomQuote = getRandomQuote(quotes);
+  let randomQuote = quotes[0];
   let htmlStr = `<p class="quote">${randomQuote.quote} </p>`;
   htmlStr += `<p class="source">${randomQuote.source}`;
 
@@ -67,11 +68,14 @@ function printQuote() {
 
   //if the quote has a year, add it the HTML string
   if (randomQuote.year != null) {
-    htmlStr += `<span class="citation">${randomQuote.citation}</span>`; 
+    htmlStr += `<span class="year">${randomQuote.year.toString()}</span>`; 
   }
 
+  //extra credit: add the category property to the HTML string
+  //htmlStr += `<span class="category">${randomQuote.category}</span>`; 
+
   //add the closing <p> to the HTML string
-  htmlStr += `</p>`;
+  const newLocal = htmlStr += `</p>`;
 
   return htmlStr;
 }
